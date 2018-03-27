@@ -108,7 +108,10 @@ interface SqlQueryInterface
     public function addMarker(string $key, string $value);
 
 
-
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+    public function __toString();
 
 
 }

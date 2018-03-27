@@ -172,6 +172,14 @@ class SqlQuery implements SqlQueryInterface
         $this->markers[$key] = $value;
         return $this;
     }
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+    public function __toString()
+    {
+        return $this->getSqlQuery();
+    }
+
 
     //--------------------------------------------
     //

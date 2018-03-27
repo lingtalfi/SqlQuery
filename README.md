@@ -84,6 +84,10 @@ and u.id=1"
 History Log
 ------------------
     
+- 1.1.0 -- 2018-03-27
+
+    - add __toString method returning the output of getSqlQuery method 
+    
 - 1.0.0 -- 2018-03-27
 
     - initial commit
