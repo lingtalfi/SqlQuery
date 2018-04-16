@@ -84,9 +84,13 @@ and u.id=1"
 History Log
 ------------------
     
+- 1.2.0 -- 2018-04-16
+
+    - add addMarkers method to SqlQueryInterface
+
 - 1.1.0 -- 2018-03-27
 
-    - add __toString method returning the output of getSqlQuery method 
+    - add __toString method returning the output of getSqlQuery method
     
 - 1.0.0 -- 2018-03-27
 

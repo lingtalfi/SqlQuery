@@ -37,7 +37,7 @@ interface SqlQueryInterface
     //
     //--------------------------------------------
     /**
-     * @param $field, for instance:
+     * @param $field , for instance:
      *
      *      - pseudo
      *      - a.pseudo
@@ -47,7 +47,7 @@ interface SqlQueryInterface
 
 
     /**
-     * @param $table, you can add your aliases too if you want, for instance
+     * @param $table , you can add your aliases too if you want, for instance
      *      - ek_user
      *      - ek_user u
      */
@@ -55,7 +55,7 @@ interface SqlQueryInterface
 
 
     /**
-     * @param $join, for instance:
+     * @param $join , for instance:
      *
      *      - inner join table2 t on t.id=p.product_id
      *      - inner join table2 t on t.id=p.product_id
@@ -66,7 +66,7 @@ interface SqlQueryInterface
     public function addJoin(string $join);
 
     /**
-     * @param $where, never include the where keyword, but always
+     * @param $where , never include the where keyword, but always
      *      start with and or or (the concrete class must prefix your clause with
      *      where 1).
      *
@@ -81,8 +81,8 @@ interface SqlQueryInterface
 
 
     /**
-     * @param $orderBy, is the name of a column
-     * @param $direction, is either asc or desc
+     * @param $orderBy , is the name of a column
+     * @param $direction , is either asc or desc
      *
      */
     public function addOrderBy(string $orderBy, string $direction);
@@ -106,6 +106,8 @@ interface SqlQueryInterface
      *
      */
     public function addMarker(string $key, string $value);
+
+    public function addMarkers(array $markers);
 
 
     //--------------------------------------------

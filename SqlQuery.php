@@ -172,6 +172,16 @@ class SqlQuery implements SqlQueryInterface
         $this->markers[$key] = $value;
         return $this;
     }
+
+    public function addMarkers(array $markers)
+    {
+        foreach ($markers as $marker => $value) {
+            $this->markers[$marker] = $value;
+        }
+        return $this;
+    }
+
+
     //--------------------------------------------
     //
     //--------------------------------------------
