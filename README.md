@@ -84,6 +84,10 @@ and u.id=1"
 History Log
 ------------------
     
+- 1.5.0 -- 2018-04-17
+
+    - add an internal cache to the SqlQuery.getSqlQuery method
+    
 - 1.4.0 -- 2018-04-17
 
     - add addGroupBy method to SqlQueryInterface

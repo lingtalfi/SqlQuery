@@ -72,6 +72,13 @@ class SqlQuery implements SqlQueryInterface
      */
     private $markers;
 
+    /**
+     * a simple internal cache for the query,
+     * note that once getSqlQuery is requested,
+     * it will be frozen...
+     */
+    private $_query;
+
     public function __construct()
     {
         $this->fields = [];
@@ -94,27 +101,31 @@ class SqlQuery implements SqlQueryInterface
 
     public function getSqlQuery()
     {
-        $br = PHP_EOL;
-        $s = $this->getBaseRequest(false);
+        if (null === $this->_query) {
 
-        if ($this->orderBy) {
-            $s .= $br;
-            $s .= "order by ";
-            $c = 0;
-            foreach ($this->orderBy as $orderBy) {
-                if (0 !== $c++) {
-                    $s .= ', ';
+            $br = PHP_EOL;
+            $s = $this->getBaseRequest(false);
+
+            if ($this->orderBy) {
+                $s .= $br;
+                $s .= "order by ";
+                $c = 0;
+                foreach ($this->orderBy as $orderBy) {
+                    if (0 !== $c++) {
+                        $s .= ', ';
+                    }
+                    list($field, $dir) = $orderBy;
+                    $s .= $field . " " . $dir;
                 }
-                list($field, $dir) = $orderBy;
-                $s .= $field . " " . $dir;
             }
-        }
 
-        if ($this->limit) {
-            $s .= $br;
-            $s .= "limit " . $this->limit[0] . ", " . $this->limit[1];
+            if ($this->limit) {
+                $s .= $br;
+                $s .= "limit " . $this->limit[0] . ", " . $this->limit[1];
+            }
+            $this->_query = $s;
         }
-        return $s;
+        return $this->_query;
     }
 
     public function getCountSqlQuery()
