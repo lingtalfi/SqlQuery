@@ -50,6 +50,7 @@ class SqlQuery implements SqlQueryInterface
      *
      */
     private $where;
+    private $groupBy;
     private $having;
 
     /**
@@ -78,6 +79,7 @@ class SqlQuery implements SqlQueryInterface
         $this->table = null;
         $this->joins = [];
         $this->where = [];
+        $this->groupBy = [];
         $this->having = [];
         $this->orderBy = [];
         $this->limit = null;
@@ -190,6 +192,13 @@ class SqlQuery implements SqlQueryInterface
     }
 
 
+    public function addGroupBy(string $groupBy)
+    {
+        $this->groupBy[] = $groupBy;
+        return $this;
+    }
+
+
 
 
     //--------------------------------------------
@@ -225,20 +234,12 @@ class SqlQuery implements SqlQueryInterface
         $br = PHP_EOL;
         $s = "";
         if (true === $isCount) {
-            $fields = $this->fields;
-
-            // sometimes we need the distinct keyword inside our count request
-            $firstField = array_shift($fields);
-            $firstField = explode(',', $firstField)[0];
-            if (false !== strpos(strtolower($firstField), 'distinct')) {
-                $s .= "select count($firstField) as count";
-            } else {
-                $s .= "select count(*) as count";
-            }
-        } else {
-            $s .= "select " . $br;
-            $s .= implode(",$br", $this->fields);
+            $s .= "select count(*) as count from (" . $br;
         }
+
+
+        $s .= "select " . $br;
+        $s .= implode(",$br", $this->fields);
         $s .= $br;
         $s .= "from " . $this->table;
         if ($this->joins) {
@@ -252,11 +253,24 @@ class SqlQuery implements SqlQueryInterface
             $s .= implode($br, $this->where);
         }
 
+
+        if ($this->groupBy) {
+            $s .= $br;
+            $s .= "group by ";
+            $s .= implode(', ', $this->groupBy);
+        }
+
+
         if ($this->having) {
             $s .= $br;
             $s .= "having";
             $s .= $br;
             $s .= implode($br . ' and ', $this->having);
+        }
+
+
+        if (true === $isCount) {
+            $s .= $br . ") as ttt";
         }
         return $s;
     }

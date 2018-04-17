@@ -91,6 +91,12 @@ interface SqlQueryInterface
      */
     public function addHaving(string $having);
 
+    /**
+     * @param string $groupBy, the name of a field.
+     * @return mixed
+     */
+    public function addGroupBy(string $groupBy);
+
 
     /**
      * @param $orderBy , is the name of a column
