@@ -101,31 +101,31 @@ class SqlQuery implements SqlQueryInterface
 
     public function getSqlQuery()
     {
-        if (null === $this->_query) {
 
-            $br = PHP_EOL;
-            $s = $this->getBaseRequest(false);
 
-            if ($this->orderBy) {
-                $s .= $br;
-                $s .= "order by ";
-                $c = 0;
-                foreach ($this->orderBy as $orderBy) {
-                    if (0 !== $c++) {
-                        $s .= ', ';
-                    }
-                    list($field, $dir) = $orderBy;
-                    $s .= $field . " " . $dir;
+        $br = PHP_EOL;
+        $s = $this->getBaseRequest(false);
+
+        if ($this->orderBy) {
+            $s .= $br;
+            $s .= "order by ";
+            $c = 0;
+            foreach ($this->orderBy as $orderBy) {
+                if (0 !== $c++) {
+                    $s .= ', ';
                 }
+                list($field, $dir) = $orderBy;
+                $s .= $field . " " . $dir;
             }
-
-            if ($this->limit) {
-                $s .= $br;
-                $s .= "limit " . $this->limit[0] . ", " . $this->limit[1];
-            }
-            $this->_query = $s;
         }
-        return $this->_query;
+
+        if ($this->limit) {
+            $s .= $br;
+            $s .= "limit " . $this->limit[0] . ", " . $this->limit[1];
+        }
+        $this->_query = $s;
+
+        return $s;
     }
 
     public function getCountSqlQuery()
