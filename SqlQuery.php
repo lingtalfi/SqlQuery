@@ -50,6 +50,7 @@ class SqlQuery implements SqlQueryInterface
      *
      */
     private $where;
+    private $having;
 
     /**
      * @var array of [$field, $dir] items
@@ -77,6 +78,7 @@ class SqlQuery implements SqlQueryInterface
         $this->table = null;
         $this->joins = [];
         $this->where = [];
+        $this->having = [];
         $this->orderBy = [];
         $this->limit = null;
         $this->markers = [];
@@ -181,6 +183,14 @@ class SqlQuery implements SqlQueryInterface
         return $this;
     }
 
+    public function addHaving(string $having)
+    {
+        $this->having[] = $having;
+        return $this;
+    }
+
+
+
 
     //--------------------------------------------
     //
@@ -240,6 +250,13 @@ class SqlQuery implements SqlQueryInterface
             $s .= "where 1";
             $s .= $br;
             $s .= implode($br, $this->where);
+        }
+
+        if ($this->having) {
+            $s .= $br;
+            $s .= "having";
+            $s .= $br;
+            $s .= implode($br . ' and ', $this->having);
         }
         return $s;
     }

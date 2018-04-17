@@ -84,6 +84,10 @@ and u.id=1"
 History Log
 ------------------
     
+- 1.3.0 -- 2018-04-17
+
+    - add addHaving method to SqlQueryInterface
+    
 - 1.2.0 -- 2018-04-16
 
     - add addMarkers method to SqlQueryInterface

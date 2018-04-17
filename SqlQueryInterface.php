@@ -81,6 +81,18 @@ interface SqlQueryInterface
 
 
     /**
+     * @param string $having , the having clause, without the having keyword,
+     *      for instance:
+     *      - sale_price between 10 and 250
+     *
+     * The havings will be merged using the and keyword.
+     *
+     * @return mixed
+     */
+    public function addHaving(string $having);
+
+
+    /**
      * @param $orderBy , is the name of a column
      * @param $direction , is either asc or desc
      *
