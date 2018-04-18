@@ -54,6 +54,14 @@ class SqlQuery implements SqlQueryInterface
     private $having;
 
     /**
+     * @var array of groupName => [having statement, ...]
+     */
+    private $havingGroups;
+
+
+    private $havingGroupTypes;
+
+    /**
      * @var array of [$field, $dir] items
      *
      * Where:
@@ -88,6 +96,8 @@ class SqlQuery implements SqlQueryInterface
         $this->where = [];
         $this->groupBy = [];
         $this->having = [];
+        $this->havingGroups = [];
+        $this->havingGroupTypes = [];
         $this->orderBy = [];
         $this->limit = null;
         $this->markers = [];
@@ -196,9 +206,19 @@ class SqlQuery implements SqlQueryInterface
         return $this;
     }
 
-    public function addHaving(string $having)
+    public function addHaving(string $having, string $groupName = null)
     {
-        $this->having[] = $having;
+        if (null === $groupName) {
+            $this->having[] = $having;
+        } else {
+            $this->havingGroups[$groupName][] = $having;
+        }
+        return $this;
+    }
+
+    public function setHavingGroupType(string $groupName, string $groupType)
+    {
+        $this->havingGroupTypes[$groupName] = $groupType;
         return $this;
     }
 

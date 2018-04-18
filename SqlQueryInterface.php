@@ -85,14 +85,39 @@ interface SqlQueryInterface
      *      for instance:
      *      - sale_price between 10 and 250
      *
-     * The havings will be merged using the and keyword.
+     * You can define a having group or not.
+     * If you define a group, then all having statements inside of it will be combined using rules defined by
+     * the group type, which defaults to "orAnd" (see setHavingGroupType method for more info).
+     * To set the group type use the setHavingGroupType method.
+     *
+     * If you don't define a group, then all having statements without a group will be combine as a virtual
+     * group.
+     * This virtual groups is always the first to be written,
+     * and then it is followed by user defined groups to form the final having clause.
      *
      * @return mixed
      */
-    public function addHaving(string $having);
+    public function addHaving(string $having, string $groupName = null);
 
     /**
-     * @param string $groupBy, the name of a field.
+     * Sets the having group type for a given having group.
+     *
+     * The available types are:
+     *
+     * - orAnd:
+     *      it will be combined with the previous having group (if any) using the "or" keyword.
+     *      Then all inner statements are combined using the "and" keyword.
+     *
+     *
+     *
+     * @param string $groupName
+     * @param string $groupType
+     * @return mixed
+     */
+    public function setHavingGroupType(string $groupName, string $groupType);
+
+    /**
+     * @param string $groupBy , the name of a field.
      * @return mixed
      */
     public function addGroupBy(string $groupBy);
