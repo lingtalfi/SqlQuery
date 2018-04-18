@@ -292,11 +292,38 @@ class SqlQuery implements SqlQueryInterface
         }
 
 
-        if ($this->having) {
+        if ($this->having || $this->havingGroups) {
             $s .= $br;
             $s .= "having";
-            $s .= $br;
-            $s .= implode($br, $this->having);
+
+
+            if ($this->having) {
+                $s .= " (";
+                $s .= $br;
+                $s .= implode($br, $this->having);
+                $s .= ")";
+            } else {
+                $s .= " ";
+            }
+
+            if ($this->havingGroups) {
+                foreach ($this->havingGroups as $groupName => $statements) {
+                    $groupType = $this->havingGroupTypes[$groupName] ?? "andOr";
+
+                    switch ($groupType) {
+                        case "andOr":
+                            $s .= $br;
+                            $s .= "(";
+                            break;
+                        default:
+                            throw new SqlQueryException("Unknown having group type: $groupType");
+                            break;
+                    }
+                    $s .= $br;
+                    $s .= implode($br . "or ", $statements);
+                    $s .= ")";
+                }
+            }
         }
 
 

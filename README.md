@@ -84,6 +84,10 @@ and u.id=1"
 History Log
 ------------------
     
+- 1.8.0 -- 2018-04-18
+
+    - add SqlQuery having group system
+    
 - 1.7.0 -- 2018-04-18
 
     - SqlQuery internal having now is agnostic and combines w/out the and keyword. You choose the and/or keyword
