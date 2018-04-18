@@ -276,7 +276,7 @@ class SqlQuery implements SqlQueryInterface
             $s .= $br;
             $s .= "having";
             $s .= $br;
-            $s .= implode($br . ' and ', $this->having);
+            $s .= implode($br, $this->having);
         }
 
 

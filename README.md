@@ -84,6 +84,10 @@ and u.id=1"
 History Log
 ------------------
     
+- 1.7.0 -- 2018-04-18
+
+    - SqlQuery internal having now is agnostic and combines w/out the and keyword. You choose the and/or keyword
+
 - 1.6.0 -- 2018-04-17
 
     - remove internal cache to the SqlQuery.getSqlQuery method
