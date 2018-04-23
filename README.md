@@ -84,6 +84,10 @@ and u.id=1"
 History Log
 ------------------
     
+- 1.9.0 -- 2018-04-23
+
+    - add SqlQuery::setGroupBy method
+    
 - 1.8.0 -- 2018-04-18
 
     - add SqlQuery having group system

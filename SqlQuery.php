@@ -229,6 +229,12 @@ class SqlQuery implements SqlQueryInterface
         return $this;
     }
 
+    public function setGroupBy(array $groupBy)
+    {
+        $this->groupBy = $groupBy;
+        return $this;
+    }
+
 
 
 

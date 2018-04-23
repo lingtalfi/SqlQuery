@@ -124,6 +124,13 @@ interface SqlQueryInterface
 
 
     /**
+     * @param array $groupBys, name of fields the query should be grouped by with.
+     * @return mixed
+     */
+    public function setGroupBy(array $groupBys);
+
+
+    /**
      * @param $orderBy , is the name of a column
      * @param $direction , is either asc or desc
      *
