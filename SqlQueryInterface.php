@@ -95,6 +95,8 @@ interface SqlQueryInterface
      * This virtual groups is always the first to be written,
      * and then it is followed by user defined groups to form the final having clause.
      *
+     *
+     *
      * @return mixed
      */
     public function addHaving(string $having, string $groupName = null);
@@ -107,6 +109,9 @@ interface SqlQueryInterface
      * - orAnd:
      *      it will be combined with the previous having group (if any) using the "or" keyword.
      *      Then all inner statements are combined using the "and" keyword.
+     * - andOr:
+     *      it will be combined with the previous having group (if any) using the "and" keyword.
+     *      Then all inner statements are combined using the "or" keyword.
      *
      *
      *
