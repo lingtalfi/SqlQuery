@@ -1,10 +1,10 @@
 <?php
 
 
-namespace SqlQuery;
+namespace Ling\SqlQuery;
 
 
-use SqlQuery\Exception\SqlQueryException;
+use Ling\SqlQuery\Exception\SqlQueryException;
 
 class SqlQuery implements SqlQueryInterface
 {

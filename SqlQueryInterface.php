@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SqlQuery;
+namespace Ling\SqlQuery;
 
 
 interface SqlQueryInterface

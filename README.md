@@ -14,7 +14,7 @@ Install
 ==========
 Using the [uni](https://github.com/lingtalfi/universe-naive-importer) command.
 ```bash
-uni import SqlQuery
+uni import Ling/SqlQuery
 ```
 
 Or just download it and place it where you want otherwise.
@@ -37,7 +37,7 @@ How to?
 
 
 use Core\Services\A;
-use SqlQuery\SqlQuery;
+use Ling\SqlQuery\SqlQuery;
 
 // using kamille framework here (https://github.com/lingtalfi/kamille)
 require_once __DIR__ . "/../boot.php";

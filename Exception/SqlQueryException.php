@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SqlQuery\Exception;
+namespace Ling\SqlQuery\Exception;
 
 class SqlQueryException extends \Exception
 {
