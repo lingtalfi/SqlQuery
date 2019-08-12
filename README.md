@@ -84,6 +84,10 @@ and u.id=1"
 History Log
 ------------------
     
+- 1.10.1 -- 2019-08-12
+
+    - fix typo
+    
 - 1.10.0 -- 2019-08-12
 
     - add SqlQuery->setDefaultWhere method

@@ -311,7 +311,7 @@ class SqlQuery implements SqlQueryInterface
         }
         if ($this->where) {
             $s .= $br;
-            $s .= "where 1";
+            $s .= "where " . $this->defaultWhereValue;
             $s .= $br;
             $s .= implode($br, $this->where);
         }
