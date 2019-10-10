@@ -84,6 +84,10 @@ and u.id=1"
 History Log
 ------------------
     
+- 1.10.2 -- 2019-10-10
+
+    - created docTool style documentation
+    
 - 1.10.1 -- 2019-08-12
 
     - fix typo
