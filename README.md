@@ -88,7 +88,11 @@ and u.id=1"
 
 History Log
 ------------------
-    
+
+- 1.10.4 -- 2020-12-04
+
+    - Add lpi-deps.byml file
+
 - 1.10.3 -- 2019-10-10
 
     - add link to doc in README.md
