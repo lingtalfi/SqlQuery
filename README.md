@@ -89,6 +89,10 @@ and u.id=1"
 History Log
 ------------------
 
+- 1.10.5 -- 2020-12-08
+
+    - Fix lpi-deps not using natsort.
+
 - 1.10.4 -- 2020-12-04
 
     - Add lpi-deps.byml file
